@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>Upload image</title>
+
+  <style>
+    input[type='file'] {
+      display: none;
+    }
+
+    .file-button {
+      display: inline-block;
+      padding: 5px 20px;
+      background-color: lightskyblue;
+    }
+
+  </style>
+</head>
+
+<body>
+  <label for="file-input"
+         class="file-button">
+    Dodaj obraz
+    <input type="file"
+           id="file-input"
+           accept="image/png, image/jpeg" />
+  </label>
+
+  <script>
+    const inputFile = document.querySelector('input');
+
+    inputFile.addEventListener('change', () => {
+      const file = inputFile.files[0];
+
+      fetch('http://localhost:8080/api/images/' + file.name, {
+        method: 'POST',
+        body: inputFile.files[0],
+      }).then(() => alert('Zdjęcie zostało zapisane na serwerze'));
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "upload-image",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
